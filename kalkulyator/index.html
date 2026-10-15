@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>window.FUMAROLA_REQUEST={"email":"lobas.msk@yandex.ru","endpoint":"https://formsubmit.co/ajax/lobas.msk@yandex.ru"};</script>
+  <title>Калькулятор аэрозольного пожаротушения «Фумарола»</title>
+  <meta name="description" content="Калькулятор аэрозольного пожаротушения «Фумарола»: объём помещения, требуемая масса состава, подбор модели.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://fumarola.ru/kalkulyator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Фумарола">
+  <meta property="og:title" content="Калькулятор аэрозольного пожаротушения «Фумарола»">
+  <meta property="og:description" content="Калькулятор аэрозольного пожаротушения «Фумарола»: объём помещения, требуемая масса состава, подбор модели.">
+  <meta property="og:url" content="https://fumarola.ru/kalkulyator/">
+  <link rel="stylesheet" href="../styles.css">
+  
+</head>
+<body>  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="../index.html" aria-label="Решение — на главную">
+        <img class="logo__img" src="../assets/logo-reshenie.png" alt="Решение">
+        <span class="logo__text">РЕШЕНИЕ</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Открыть меню">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="primaryNav" aria-label="Основная навигация">
+        <ul class="nav__list"><li><a href="../produkciya/index.html" class="nav__link">Продукция</a></li><li><a href="../uslugi/index.html" class="nav__link">Услуги</a></li><li><a href="../primenenie/index.html" class="nav__link">Применение</a></li><li><a href="../kak-eto-rabotaet/index.html" class="nav__link">Как это работает</a></li><li><a href="../video/index.html" class="nav__link">Видео</a></li><li><a href="../kalkulyator/index.html" class="nav__link is-active">Калькулятор</a></li><li><a href="../dokumenty/index.html" class="nav__link">Документы</a></li><li><a href="../kontakty/index.html" class="nav__link">Контакты</a></li><li><a href="../kontakty/index.html" class="nav__link nav__link--cta">Консультация</a></li></ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div id="top"></div><div class="container"><nav class="crumbs" aria-label="Хлебные крошки"><ol><li><a href="../index.html">Главная</a></li><li><span aria-current="page">Калькулятор</span></li></ol></nav></div><section class="pagehead"><div class="container"><p class="pagehead__eyebrow">Инструмент</p><h1 class="pagehead__title">Калькулятор</h1><p class="pagehead__lead">Рассчитайте объём помещения и получите предварительный подбор модели.</p></div></section>    <section class="section">
+      <div class="container" id="calcAnchor">
+        <div class="calc-warning" role="note">
+          Демонстрационная версия калькулятора: часть коэффициентов и параметры моделей уточняются.
+          Коэффициент негерметичности задан: 1,2.
+        </div>
+
+        <ol class="calc-steps">
+          <li class="calc-steps__item is-active">1. Помещения</li>
+          <li class="calc-steps__item">2. Результат</li>
+        </ol>
+
+        <form id="fireCalc" novalidate>
+          <div class="calc-step is-active">
+            <h3 class="calc-step__title">Помещения</h3>
+            <p class="form__label">Для каждого помещения укажите габариты, герметичность и наличие людей.</p>
+            <div class="rooms" id="roomsList"></div>
+            <button type="button" class="btn btn--ghost" data-add-room>+ Добавить помещение</button>
+            <p class="form__error" id="roomError" aria-live="polite"></p>
+            <div class="calc-nav">
+              <span></span>
+              <button type="button" class="btn btn--primary" data-calc>Рассчитать</button>
+            </div>
+          </div>
+
+          <div class="calc-step">
+            <h3 class="calc-step__title">Результат</h3>
+            <div class="calc-result" id="calcResult" aria-live="polite"></div>
+            <div class="calc-nav">
+              <button type="button" class="btn btn--ghost" data-prev>Изменить данные</button>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <button type="button" class="btn btn--ghost" data-export>Скачать PDF</button>
+                <button type="button" class="btn btn--primary" data-request-prices>Получить цены</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <section class="calc-request" id="calcRequest" hidden>
+          <h2 class="calc-request__title">Получить цены</h2>
+          <p class="calc-request__lead">Стоимость рассчитывается индивидуально. Проверьте расчёт и оставьте контакты — пришлём цены и коммерческое предложение на этот комплект.</p>
+          <div class="calc-request__summary" id="calcRequestSummary"></div>
+          <form class="form" id="priceRequestForm" novalidate>
+            <input type="hidden" id="reqCalculation" name="calculation">
+            <input type="text" id="reqHoney" name="_honey" class="calc-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form__field">
+              <label class="form__label" for="reqName">Имя <span class="req">*</span></label>
+              <input class="form__input" id="reqName" type="text" autocomplete="name" placeholder="Как к вам обращаться">
+              <p class="form__error" id="reqNameError" aria-live="polite"></p>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="reqPhone">Телефон <span class="req">*</span></label>
+              <input class="form__input" id="reqPhone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__">
+              <p class="form__error" id="reqPhoneError" aria-live="polite"></p>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="reqEmail">E-mail <span class="req">*</span></label>
+              <input class="form__input" id="reqEmail" type="email" autocomplete="email" placeholder="name@company.ru">
+              <p class="form__error" id="reqEmailError" aria-live="polite"></p>
+            </div>
+            <label class="form__check">
+              <input type="checkbox" id="reqConsent" name="consent">
+              <span>Согласен на обработку персональных данных</span>
+            </label>
+            <p class="form__error" id="reqConsentError" aria-live="polite"></p>
+            <button class="btn btn--primary btn--block" type="submit">Запросить стоимость спецификации</button>
+            <p class="form__status" id="reqStatus" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+    <script src="../logo-data.js"></script>
+    <script src="../calculator.js"></script>
+  </main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="logo__img" src="../assets/logo-reshenie.png" alt="Решение">
+        <span class="logo__text">РЕШЕНИЕ</span>
+      </div>
+      <nav class="footer__nav" aria-label="Подвал">
+        <a href="../produkciya/index.html">Продукция</a>
+        <a href="../uslugi/index.html">Услуги</a>
+        <a href="../primenenie/index.html">Применение</a>
+        <a href="../dokumenty/index.html">Документы</a>
+        <a href="../video/index.html">Видео</a>
+        <a href="../tenderam/index.html">Тендеры</a>
+        <a href="../proektirovshchikam/index.html">Проектировщикам</a>
+        <a href="../o-kompanii/index.html">О компании</a>
+        <a href="../kontakty/index.html">Контакты</a>
+      </nav>
+      <a href="#top" class="footer__up">Наверх ↑</a>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
